@@ -25,10 +25,10 @@ export default function Modal({
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const sizes = {
-    sm: 'max-w-md',
-    md: 'max-w-lg',
-    lg: 'max-w-2xl',
-    xl: 'max-w-4xl',
+    sm: 'sm:max-w-md',
+    md: 'sm:max-w-lg',
+    lg: 'sm:max-w-2xl',
+    xl: 'sm:max-w-4xl',
   };
 
   useEffect(() => {
@@ -51,7 +51,8 @@ export default function Modal({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex min-h-full items-center justify-center p-4">
+      {/* Mobile: full screen, Desktop: centered with padding */}
+      <div className="flex min-h-full sm:items-center sm:justify-center sm:p-4">
         <div
           ref={overlayRef}
           className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity animate-fade-in"
@@ -59,19 +60,24 @@ export default function Modal({
         />
         <div
           className={clsx(
-            'relative w-full bg-white rounded-2xl shadow-2xl transform transition-all animate-slide-up',
+            'relative w-full bg-white shadow-2xl transform transition-all animate-slide-up',
+            'min-h-screen sm:min-h-0 sm:rounded-2xl',
             sizes[size]
           )}
         >
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 truncate pr-4">{title}</h2>
             {showClose && (
-              <Button variant="ghost" size="sm" onClick={onClose} className="!p-1.5 rounded-full">
+              <Button variant="ghost" size="sm" onClick={onClose} className="!p-1.5 rounded-full flex-shrink-0">
                 <X className="w-5 h-5" />
               </Button>
             )}
           </div>
-          <div className="p-6">{children}</div>
+          {/* Content */}
+          <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(100vh-80px)] sm:max-h-[70vh]">
+            {children}
+          </div>
         </div>
       </div>
     </div>
