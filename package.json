@@ -12,7 +12,12 @@
     "type": "git",
     "url": "http://local_proxy@127.0.0.1:29743/git/prabhatlnct2008/cleaningservices_crm_demo"
   },
-  "keywords": ["crm", "cleaning-services", "nextjs", "react"],
+  "keywords": [
+    "crm",
+    "cleaning-services",
+    "nextjs",
+    "react"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -28,7 +33,7 @@
     "@types/react": "^19.2.10",
     "autoprefixer": "^10.4.24",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.9.3"
   }
 }
