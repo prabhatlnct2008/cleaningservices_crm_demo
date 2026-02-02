@@ -12,16 +12,16 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, hover = false, padding = 'md', children, ...props }, ref) => {
     const paddings = {
       none: '',
-      sm: 'p-4',
-      md: 'p-6',
-      lg: 'p-8',
+      sm: 'p-3 sm:p-4',
+      md: 'p-4 sm:p-6',
+      lg: 'p-5 sm:p-8',
     };
 
     return (
       <div
         ref={ref}
         className={clsx(
-          'bg-white rounded-xl border border-gray-200 shadow-sm',
+          'bg-white rounded-lg sm:rounded-xl border border-gray-200 shadow-sm',
           hover && 'hover:shadow-md hover:border-gray-300 transition-all duration-200 cursor-pointer',
           paddings[padding],
           className
